@@ -8,24 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		451C24922659E029004C52AD /* SwiftUI_training_APIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451C24912659E029004C52AD /* SwiftUI_training_APIApp.swift */; };
-		451C24942659E029004C52AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451C24932659E029004C52AD /* ContentView.swift */; };
+		451C24942659E029004C52AD /* RepoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451C24932659E029004C52AD /* RepoListView.swift */; };
 		451C24962659E02B004C52AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 451C24952659E02B004C52AD /* Assets.xcassets */; };
 		451C24992659E02B004C52AD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 451C24982659E02B004C52AD /* Preview Assets.xcassets */; };
 		451C24A22659E4AC004C52AD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451C24A12659E4AC004C52AD /* User.swift */; };
 		451C24A52659E4B4004C52AD /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451C24A42659E4B4004C52AD /* Repo.swift */; };
 		451C24A92659E771004C52AD /* RepoInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451C24A82659E771004C52AD /* RepoInfoView.swift */; };
+		451C24AC265AB77F004C52AD /* RepoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451C24AB265AB77F004C52AD /* RepoDetailView.swift */; };
+		451C24B3265AB8F8004C52AD /* Repo+mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451C24B2265AB8F8004C52AD /* Repo+mock.swift */; };
+		451C24B7265AB909004C52AD /* User+mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451C24B6265AB909004C52AD /* User+mock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		451C248E2659E029004C52AD /* SwiftUI-training-API.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI-training-API.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		451C24912659E029004C52AD /* SwiftUI_training_APIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_training_APIApp.swift; sourceTree = "<group>"; };
-		451C24932659E029004C52AD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		451C24932659E029004C52AD /* RepoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListView.swift; sourceTree = "<group>"; };
 		451C24952659E02B004C52AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		451C24982659E02B004C52AD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		451C249A2659E02B004C52AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		451C24A12659E4AC004C52AD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		451C24A42659E4B4004C52AD /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		451C24A82659E771004C52AD /* RepoInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoInfoView.swift; sourceTree = "<group>"; };
+		451C24AB265AB77F004C52AD /* RepoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailView.swift; sourceTree = "<group>"; };
+		451C24B2265AB8F8004C52AD /* Repo+mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Repo+mock.swift"; sourceTree = "<group>"; };
+		451C24B6265AB909004C52AD /* User+mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+mock.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,14 +64,13 @@
 		451C24902659E029004C52AD /* SwiftUI-training-API */ = {
 			isa = PBXGroup;
 			children = (
+				451C24AF265AB7BD004C52AD /* Views */,
 				451C24912659E029004C52AD /* SwiftUI_training_APIApp.swift */,
-				451C24932659E029004C52AD /* ContentView.swift */,
 				451C24952659E02B004C52AD /* Assets.xcassets */,
 				451C249A2659E02B004C52AD /* Info.plist */,
 				451C24972659E02B004C52AD /* Preview Content */,
 				451C24A12659E4AC004C52AD /* User.swift */,
 				451C24A42659E4B4004C52AD /* Repo.swift */,
-				451C24A82659E771004C52AD /* RepoInfoView.swift */,
 			);
 			path = "SwiftUI-training-API";
 			sourceTree = "<group>";
@@ -73,9 +78,29 @@
 		451C24972659E02B004C52AD /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				451C24B1265AB8E4004C52AD /* Mock */,
 				451C24982659E02B004C52AD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		451C24AF265AB7BD004C52AD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				451C24A82659E771004C52AD /* RepoInfoView.swift */,
+				451C24932659E029004C52AD /* RepoListView.swift */,
+				451C24AB265AB77F004C52AD /* RepoDetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		451C24B1265AB8E4004C52AD /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				451C24B2265AB8F8004C52AD /* Repo+mock.swift */,
+				451C24B6265AB909004C52AD /* User+mock.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,10 +172,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				451C24942659E029004C52AD /* ContentView.swift in Sources */,
+				451C24942659E029004C52AD /* RepoListView.swift in Sources */,
+				451C24B3265AB8F8004C52AD /* Repo+mock.swift in Sources */,
 				451C24A92659E771004C52AD /* RepoInfoView.swift in Sources */,
 				451C24922659E029004C52AD /* SwiftUI_training_APIApp.swift in Sources */,
+				451C24AC265AB77F004C52AD /* RepoDetailView.swift in Sources */,
 				451C24A22659E4AC004C52AD /* User.swift in Sources */,
+				451C24B7265AB909004C52AD /* User+mock.swift in Sources */,
 				451C24A52659E4B4004C52AD /* Repo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

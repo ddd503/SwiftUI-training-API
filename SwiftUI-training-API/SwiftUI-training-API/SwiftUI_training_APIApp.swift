@@ -11,7 +11,7 @@ import SwiftUI
 struct SwiftUI_training_APIApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RepoListView()
         }
     }
 }
