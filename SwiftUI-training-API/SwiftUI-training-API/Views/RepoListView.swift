@@ -6,16 +6,19 @@
 //
 
 import SwiftUI
+import Combine
 
 struct RepoListView: View {
-    @State private var mockRepos: [Repo] = []
+//    @State private var reposLoader = ReposLoader()
+    @StateObject private var reposLoader = ReposLoader()
+    private var cancellables = Set<AnyCancellable>()
 
     var body: some View {
         NavigationView {
-            if mockRepos.isEmpty {
+            if reposLoader.repos.isEmpty {
                 ProgressView("loading...")
             } else {
-                List(mockRepos) { repo in
+                List(reposLoader.repos) { repo in
                     NavigationLink(
                         destination: RepoDetailView(repo: repo)) {
                         RepoInfoView(repo: repo)
@@ -24,17 +27,9 @@ struct RepoListView: View {
                 .navigationTitle("Repositories")
             }
         }.onAppear(perform: {
-            loadRepos()
+            // ここがメインスレッドなのが悪い
+            reposLoader.call()
         })
-    }
-
-    private func loadRepos() {
-        // 1秒後にモックデータを読み込む
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            mockRepos = [
-                .mock1, .mock2, .mock3, .mock4, .mock5
-            ]
-        }
     }
 }
 
