@@ -25,3 +25,10 @@ struct RepoInfoView: View {
         }
     }
 }
+
+struct RepoInfoView_Previews: PreviewProvider {
+    static var previews: some View {
+        RepoInfoView(repo: .mock1)
+    }
+}
+

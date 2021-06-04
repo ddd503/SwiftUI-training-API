@@ -10,9 +10,11 @@ import Combine
 
 class ReposLoader: ObservableObject {
     @Published private(set) var repos = [Repo]()
-    
+    @Published private(set) var error: Error? = nil
+    @Published private(set) var isLoading: Bool = false
+
     private var cancellables = Set<AnyCancellable>()
-    
+
     func call() {
         let reposPublisher = GithubAPIDataStore().publicRepos()
         reposPublisher
@@ -25,8 +27,17 @@ class ReposLoader: ObservableObject {
             }
             .decode(type: [PublicRepository].self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main) // 非同期処理が流れてくるのでメインに戻す
-            .sink(receiveCompletion: { completion in
-                print("Finished: \(completion)")
+            .handleEvents(receiveSubscription: { [weak self] _ in // イベントが流れる前に走る？
+                self?.isLoading = true
+            })
+            .sink(receiveCompletion: { [weak self] completion in
+                switch completion {
+                case .failure(let error):
+                    self?.error = error
+                case .finished:
+                    print("finished")
+                }
+                self?.isLoading = false
             }, receiveValue: { [weak self] publicRepos in
                 self?.repos = publicRepos.map {
                     Repo(id: $0.id,
