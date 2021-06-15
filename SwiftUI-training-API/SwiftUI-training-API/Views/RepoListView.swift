@@ -15,24 +15,21 @@ struct RepoListView: View {
     var body: some View {
         NavigationView {
             Group {
-                // エラー発生時
-                if reposLoader.error != nil {
+                switch reposLoader.state {
+                case .idle, .loading:
+                    ProgressView("loading...")
+                case .failed(_):
                     RepoErrorView(retryAction: {
                         reposLoader.call()
                     })
-                } else {
-                    if reposLoader.isLoading {
-                        ProgressView("loading...")
+                case .loaded(let repos):
+                    if repos.isEmpty {
+                        RepoEmptyView()
                     } else {
-                        // 通信完了後
-                        if reposLoader.repos.isEmpty {
-                            RepoEmptyView()
-                        } else {
-                            List(reposLoader.repos) { repo in
-                                NavigationLink(
-                                    destination: RepoDetailView(repo: repo)) {
-                                    RepoInfoView(repo: repo)
-                                }
+                        List(repos) { repo in
+                            NavigationLink(
+                                destination: RepoDetailView(repo: repo)) {
+                                RepoInfoView(repo: repo)
                             }
                         }
                     }

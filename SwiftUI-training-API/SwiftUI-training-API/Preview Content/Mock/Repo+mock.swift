@@ -41,4 +41,5 @@ extension Repo {
         description: "This is a good code sample",
         stargazersCount: 10
     )
+    static let mockEmptyRepos = [Repo]()
 }

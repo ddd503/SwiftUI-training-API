@@ -9,9 +9,7 @@ import Foundation
 import Combine
 
 class ReposLoader: ObservableObject {
-    @Published private(set) var repos = [Repo]()
-    @Published private(set) var error: Error? = nil
-    @Published private(set) var isLoading: Bool = false
+    @Published private(set) var state: Stateful<[Repo]> = .idle
 
     private var cancellables = Set<AnyCancellable>()
 
@@ -28,24 +26,24 @@ class ReposLoader: ObservableObject {
             .decode(type: [PublicRepository].self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main) // 非同期処理が流れてくるのでメインに戻す
             .handleEvents(receiveSubscription: { [weak self] _ in // イベントが流れる前に走る？
-                self?.isLoading = true
+                self?.state = .loading
             })
             .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
                 case .failure(let error):
-                    self?.error = error
+                    self?.state = .failed(error)
                 case .finished:
-                    print("finished")
+                    print("正常に終了したため、receiveValueに値が流れる")
                 }
-                self?.isLoading = false
             }, receiveValue: { [weak self] publicRepos in
-                self?.repos = publicRepos.map {
+                let repos = publicRepos.map {
                     Repo(id: $0.id,
                          name: $0.name,
                          owner: User(name: $0.owner.login),
                          description: $0.description ?? "",
                          stargazersCount: $0.stargazersCount)
                 }
+                self?.state = .loaded(repos)
             }
             ).store(in: &cancellables)
     }
