@@ -14,31 +14,31 @@ struct RepoListView: View {
 
     var body: some View {
         NavigationView {
-            // エラー発生時
-            if reposLoader.error != nil {
-                RepoErrorView(retryAction: {
-                    reposLoader.call()
-                })
-                .navigationTitle("Repositories")
-            } else {
-                if reposLoader.isLoading {
-                    ProgressView("loading...")
+            Group {
+                // エラー発生時
+                if reposLoader.error != nil {
+                    RepoErrorView(retryAction: {
+                        reposLoader.call()
+                    })
                 } else {
-                    // 通信完了後
-                    if reposLoader.repos.isEmpty {
-                        RepoEmptyView()
-                            .navigationTitle("Repositories")
+                    if reposLoader.isLoading {
+                        ProgressView("loading...")
                     } else {
-                        List(reposLoader.repos) { repo in
-                            NavigationLink(
-                                destination: RepoDetailView(repo: repo)) {
-                                RepoInfoView(repo: repo)
+                        // 通信完了後
+                        if reposLoader.repos.isEmpty {
+                            RepoEmptyView()
+                        } else {
+                            List(reposLoader.repos) { repo in
+                                NavigationLink(
+                                    destination: RepoDetailView(repo: repo)) {
+                                    RepoInfoView(repo: repo)
+                                }
                             }
                         }
-                        .navigationTitle("Repositories")
                     }
                 }
             }
+            .navigationTitle("Repositories")
         }.onAppear(perform: {
             reposLoader.call()
         })
