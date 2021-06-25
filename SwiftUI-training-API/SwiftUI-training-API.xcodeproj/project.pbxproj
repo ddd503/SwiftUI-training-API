@@ -18,6 +18,9 @@
 		451C24B3265AB8F8004C52AD /* Repo+mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451C24B2265AB8F8004C52AD /* Repo+mock.swift */; };
 		451C24B7265AB909004C52AD /* User+mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451C24B6265AB909004C52AD /* User+mock.swift */; };
 		45316F5D2678F7A800CAB910 /* Stateful.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45316F5C2678F7A800CAB910 /* Stateful.swift */; };
+		45316F61268561F900CAB910 /* RepoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45316F60268561F900CAB910 /* RepoListViewModel.swift */; };
+		45316F65268562B900CAB910 /* RepoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45316F64268562B900CAB910 /* RepoRepository.swift */; };
+		45316F682685632A00CAB910 /* RepoAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45316F672685632A00CAB910 /* RepoAPIClient.swift */; };
 		45F98BE02667C9BA000B30F2 /* ReposLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F98BDF2667C9BA000B30F2 /* ReposLoader.swift */; };
 		45F98BE42668F688000B30F2 /* PublicRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F98BE32668F688000B30F2 /* PublicRepository.swift */; };
 		45F98BE82668F7BB000B30F2 /* GithubAPIDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F98BE72668F7BB000B30F2 /* GithubAPIDataStore.swift */; };
@@ -39,6 +42,9 @@
 		451C24B2265AB8F8004C52AD /* Repo+mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Repo+mock.swift"; sourceTree = "<group>"; };
 		451C24B6265AB909004C52AD /* User+mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+mock.swift"; sourceTree = "<group>"; };
 		45316F5C2678F7A800CAB910 /* Stateful.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stateful.swift; sourceTree = "<group>"; };
+		45316F60268561F900CAB910 /* RepoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListViewModel.swift; sourceTree = "<group>"; };
+		45316F64268562B900CAB910 /* RepoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoRepository.swift; sourceTree = "<group>"; };
+		45316F672685632A00CAB910 /* RepoAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoAPIClient.swift; sourceTree = "<group>"; };
 		45F98BDF2667C9BA000B30F2 /* ReposLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposLoader.swift; sourceTree = "<group>"; };
 		45F98BE32668F688000B30F2 /* PublicRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicRepository.swift; sourceTree = "<group>"; };
 		45F98BE72668F7BB000B30F2 /* GithubAPIDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAPIDataStore.swift; sourceTree = "<group>"; };
@@ -76,14 +82,13 @@
 		451C24902659E029004C52AD /* SwiftUI-training-API */ = {
 			isa = PBXGroup;
 			children = (
+				45316F5F268561E900CAB910 /* ViewModel */,
 				45F98BE22668F674000B30F2 /* Model */,
 				451C24AF265AB7BD004C52AD /* Views */,
 				451C24912659E029004C52AD /* SwiftUI_training_APIApp.swift */,
 				451C24952659E02B004C52AD /* Assets.xcassets */,
 				451C249A2659E02B004C52AD /* Info.plist */,
 				451C24972659E02B004C52AD /* Preview Content */,
-				451C24A12659E4AC004C52AD /* User.swift */,
-				451C24A42659E4B4004C52AD /* Repo.swift */,
 			);
 			path = "SwiftUI-training-API";
 			sourceTree = "<group>";
@@ -119,12 +124,24 @@
 			path = Mock;
 			sourceTree = "<group>";
 		};
+		45316F5F268561E900CAB910 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				45316F60268561F900CAB910 /* RepoListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		45F98BE22668F674000B30F2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				45316F64268562B900CAB910 /* RepoRepository.swift */,
+				45316F672685632A00CAB910 /* RepoAPIClient.swift */,
 				45F98BE32668F688000B30F2 /* PublicRepository.swift */,
 				45F98BE72668F7BB000B30F2 /* GithubAPIDataStore.swift */,
 				45316F5C2678F7A800CAB910 /* Stateful.swift */,
+				451C24A12659E4AC004C52AD /* User.swift */,
+				451C24A42659E4B4004C52AD /* Repo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -203,9 +220,12 @@
 				451C24B3265AB8F8004C52AD /* Repo+mock.swift in Sources */,
 				45F98BE42668F688000B30F2 /* PublicRepository.swift in Sources */,
 				451C24A92659E771004C52AD /* RepoInfoView.swift in Sources */,
+				45316F65268562B900CAB910 /* RepoRepository.swift in Sources */,
 				45F98BE82668F7BB000B30F2 /* GithubAPIDataStore.swift in Sources */,
+				45316F682685632A00CAB910 /* RepoAPIClient.swift in Sources */,
 				451C24922659E029004C52AD /* SwiftUI_training_APIApp.swift in Sources */,
 				451C24AC265AB77F004C52AD /* RepoDetailView.swift in Sources */,
+				45316F61268561F900CAB910 /* RepoListViewModel.swift in Sources */,
 				45F98BE02667C9BA000B30F2 /* ReposLoader.swift in Sources */,
 				451C24A22659E4AC004C52AD /* User.swift in Sources */,
 				45F98BEE266A7010000B30F2 /* RepoEmptyView.swift in Sources */,

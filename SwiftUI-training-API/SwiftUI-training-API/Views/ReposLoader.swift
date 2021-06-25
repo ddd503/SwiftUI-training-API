@@ -10,20 +10,15 @@ import Combine
 
 class ReposLoader: ObservableObject {
     @Published private(set) var state: Stateful<[Repo]> = .idle
-
+    private let repoRepository: RepoRepository
     private var cancellables = Set<AnyCancellable>()
 
+    init(repoRepository: RepoRepository = RepoRepositoryImpl(repoAPIClient: RepoAPIClientImpl())) {
+        self.repoRepository = repoRepository
+    }
+
     func call() {
-        let reposPublisher = GithubAPIDataStore().publicRepos()
-        reposPublisher
-            .tryMap() { element -> Data in
-                guard let httpResponse = element.response as? HTTPURLResponse,
-                      httpResponse.statusCode == 200 else {
-                    throw URLError(.badServerResponse)
-                }
-                return element.data
-            }
-            .decode(type: [PublicRepository].self, decoder: JSONDecoder())
+        repoRepository.fetchRepos()
             .receive(on: DispatchQueue.main) // 非同期処理が流れてくるのでメインに戻す
             .handleEvents(receiveSubscription: { [weak self] _ in // イベントが流れる前に走る？
                 self?.state = .loading
@@ -35,14 +30,7 @@ class ReposLoader: ObservableObject {
                 case .finished:
                     print("正常に終了したため、receiveValueに値が流れる")
                 }
-            }, receiveValue: { [weak self] publicRepos in
-                let repos = publicRepos.map {
-                    Repo(id: $0.id,
-                         name: $0.name,
-                         owner: User(name: $0.owner.login),
-                         description: $0.description ?? "",
-                         stargazersCount: $0.stargazersCount)
-                }
+            }, receiveValue: { [weak self] repos in
                 self?.state = .loaded(repos)
             }
             ).store(in: &cancellables)
