@@ -9,18 +9,17 @@ import SwiftUI
 import Combine
 
 struct RepoListView: View {
-    @StateObject private var reposLoader = ReposLoader()
-    private var cancellables = Set<AnyCancellable>()
+    @StateObject private var viewModel = RepoListViewModel()
 
     var body: some View {
         NavigationView {
             Group {
-                switch reposLoader.state {
+                switch viewModel.state {
                 case .idle, .loading:
                     ProgressView("loading...")
                 case .failed(_):
                     RepoErrorView(retryAction: {
-                        reposLoader.call()
+                        viewModel.onRetryButtonTapped()
                     })
                 case .loaded(let repos):
                     if repos.isEmpty {
@@ -37,7 +36,7 @@ struct RepoListView: View {
             }
             .navigationTitle("Repositories")
         }.onAppear(perform: {
-            reposLoader.call()
+            viewModel.onAppear()
         })
     }
 }
