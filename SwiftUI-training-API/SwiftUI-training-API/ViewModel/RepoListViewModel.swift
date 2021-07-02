@@ -36,7 +36,8 @@ final class RepoListViewModel: ObservableObject {
                 switch completion {
                 case .failure(let error):
                     self?.state = .failed(error)
-                case .finished: break
+                case .finished:
+                    print("正常に終了したため、receiveValueに値が流れる")
                 }
             } receiveValue: { [weak self] (repos) in
                 self?.state = .loaded(repos)

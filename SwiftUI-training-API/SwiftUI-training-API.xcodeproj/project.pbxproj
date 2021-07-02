@@ -21,9 +21,7 @@
 		45316F61268561F900CAB910 /* RepoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45316F60268561F900CAB910 /* RepoListViewModel.swift */; };
 		45316F65268562B900CAB910 /* RepoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45316F64268562B900CAB910 /* RepoRepository.swift */; };
 		45316F682685632A00CAB910 /* RepoAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45316F672685632A00CAB910 /* RepoAPIClient.swift */; };
-		45F98BE02667C9BA000B30F2 /* ReposLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F98BDF2667C9BA000B30F2 /* ReposLoader.swift */; };
 		45F98BE42668F688000B30F2 /* PublicRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F98BE32668F688000B30F2 /* PublicRepository.swift */; };
-		45F98BE82668F7BB000B30F2 /* GithubAPIDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F98BE72668F7BB000B30F2 /* GithubAPIDataStore.swift */; };
 		45F98BEB266A674B000B30F2 /* RepoErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F98BEA266A674B000B30F2 /* RepoErrorView.swift */; };
 		45F98BEE266A7010000B30F2 /* RepoEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F98BED266A7010000B30F2 /* RepoEmptyView.swift */; };
 /* End PBXBuildFile section */
@@ -45,9 +43,7 @@
 		45316F60268561F900CAB910 /* RepoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListViewModel.swift; sourceTree = "<group>"; };
 		45316F64268562B900CAB910 /* RepoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoRepository.swift; sourceTree = "<group>"; };
 		45316F672685632A00CAB910 /* RepoAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoAPIClient.swift; sourceTree = "<group>"; };
-		45F98BDF2667C9BA000B30F2 /* ReposLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposLoader.swift; sourceTree = "<group>"; };
 		45F98BE32668F688000B30F2 /* PublicRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicRepository.swift; sourceTree = "<group>"; };
-		45F98BE72668F7BB000B30F2 /* GithubAPIDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAPIDataStore.swift; sourceTree = "<group>"; };
 		45F98BEA266A674B000B30F2 /* RepoErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoErrorView.swift; sourceTree = "<group>"; };
 		45F98BED266A7010000B30F2 /* RepoEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoEmptyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,7 +104,6 @@
 				451C24A82659E771004C52AD /* RepoInfoView.swift */,
 				451C24932659E029004C52AD /* RepoListView.swift */,
 				451C24AB265AB77F004C52AD /* RepoDetailView.swift */,
-				45F98BDF2667C9BA000B30F2 /* ReposLoader.swift */,
 				45F98BEA266A674B000B30F2 /* RepoErrorView.swift */,
 				45F98BED266A7010000B30F2 /* RepoEmptyView.swift */,
 			);
@@ -138,7 +133,6 @@
 				45316F64268562B900CAB910 /* RepoRepository.swift */,
 				45316F672685632A00CAB910 /* RepoAPIClient.swift */,
 				45F98BE32668F688000B30F2 /* PublicRepository.swift */,
-				45F98BE72668F7BB000B30F2 /* GithubAPIDataStore.swift */,
 				45316F5C2678F7A800CAB910 /* Stateful.swift */,
 				451C24A12659E4AC004C52AD /* User.swift */,
 				451C24A42659E4B4004C52AD /* Repo.swift */,
@@ -221,12 +215,10 @@
 				45F98BE42668F688000B30F2 /* PublicRepository.swift in Sources */,
 				451C24A92659E771004C52AD /* RepoInfoView.swift in Sources */,
 				45316F65268562B900CAB910 /* RepoRepository.swift in Sources */,
-				45F98BE82668F7BB000B30F2 /* GithubAPIDataStore.swift in Sources */,
 				45316F682685632A00CAB910 /* RepoAPIClient.swift in Sources */,
 				451C24922659E029004C52AD /* SwiftUI_training_APIApp.swift in Sources */,
 				451C24AC265AB77F004C52AD /* RepoDetailView.swift in Sources */,
 				45316F61268561F900CAB910 /* RepoListViewModel.swift in Sources */,
-				45F98BE02667C9BA000B30F2 /* ReposLoader.swift in Sources */,
 				451C24A22659E4AC004C52AD /* User.swift in Sources */,
 				45F98BEE266A7010000B30F2 /* RepoEmptyView.swift in Sources */,
 				45F98BEB266A674B000B30F2 /* RepoErrorView.swift in Sources */,
